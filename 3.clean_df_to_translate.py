@@ -1,38 +1,44 @@
 import pandas as pd
 
-# Abrimos el df
-df = pd.read_csv("texts.csv",
-                 header=0,
-                 encoding="utf-8")
+"""DONE"""
 
-#Guardamos los titulos
-df_titles = df["title"].copy()
-df_titles.to_csv("titles_to_translate.csv", index=False, encoding="utf-8")
+def main():
 
-#limpiamos columnas que no necesitamos
+        # Abrimos el df
 
-df.drop(columns = ["extraction_method",
-                      "extraction_status",
-                      "url",
-                      "language"],inplace=True)
+        df = pd.read_csv("texts.csv",
+                         header=0,
+                         encoding="utf-8")
 
-#limpiamos filas sin texto de noticia
-df = df.dropna(subset=["body"])
+        #Borramos columnas que no necesitamos
+        df.drop(columns = ["extraction_method",
+                              "extraction_status",
+                              "url","source"],inplace=True)
 
-#limpiamos filas con un texto mayo a 11k caracteres
+        #Guardamos los titulos
 
-df = df[df["body"].str.len()<11000]
+        df_titles = df[["language","title"]].copy()
+        print("=== TITLES SAVE IN titles_to_translate.csv ===")
+        df_titles.to_csv("titles_to_translate.csv", index=False, encoding="utf-8")
 
-#limpiamos filas con texto sin sentido
 
-trash=["°","³"]
+        #limpiamos filas sin texto de noticias
 
-df = df[~df['body'].fillna('').str.contains('|'.join(trash), case=False, regex=True)]
+        df_bodies = df[["title","language","body"]].copy()
+        df_bodies = df_bodies.dropna(subset=["body"])
 
-# reiniciamos el indice
+        #limpiamos filas con un texto mayo a 11k caracteres
 
-df = df.reset_index(drop=True)
+        df_bodies = df_bodies[df_bodies["body"].str.len()<11000]
 
-# Guardamos
+        #limpiamos filas con texto sin sentido (!!REVISAR!!)
 
-df.to_csv("texts_to_translate.csv", index=False, encoding="utf-8")
+        trash=["³","°"]
+        df_bodies = df_bodies[~df_bodies['body'].fillna('').str.contains('|'.join(trash), case=False, regex=True)]
+
+        #GUARDAMOS BODIES
+        print("=== TEXTS SAVES IN texts_to_translate.csv ===")
+        df_bodies.to_csv("texts_to_translate.csv", index=False, encoding="utf-8")
+
+if __name__ == "__main__":
+        main()

@@ -1,0 +1,207 @@
+========================================================
+SECTION 1 — TOPICS IDENTIFIED IN EACH CLUSTER
+========================================================
+
+| Cluster | Main topic | Key journalistic finding |
+|---------|------------|--------------------------|
+| -1 | Comprehensive Xi-Trump state visit in the US (ceremonial events, diplomacy, and deliverables) | The fragments coalesce around Xi Jinping’s three-day Washington trip, highlighting arrival on the tarmac, White House engagements, a state dinner, and the stated deliverables (including eight deliverables and a tariff-truce extension), with extensive coverage of symbolism, protocols, and evolving expectations for concrete outcomes. |
+| 0 | Noise and automation artifacts | Several fragments are redirects or bot-detection prompts with no substantive content about the visit. |
+| 1 | Mixed media/tech-news framing | Two fragments resemble tech-news aggregation with promotional or unrelated copy, not event reporting about Xi–Trump. |
+| 2 | Middle East leverage and strategic risk | Fragments discuss regional dynamics (Hormuz, Iran) as a backdrop to great-power leverage, not a core focus of the Xi–Trump visit. |
+| 3 | Historical protocol and airport greetings | Provides background on past airport welcomes and protocol deviations, illustrating ceremonial norms rather than primary outcomes. |
+| 4 | Nuclear weapons misinformation (fact-check) | A viral claim about Xi demanding US/Israel disarmament circulates; fact-checking clarifies China’s actual non-proliferation stance. |
+| 5 | Taiwan red lines and cross-strait messaging | Warnings about Taiwan and red-line framing ahead of or during discussions, underscoring sensitive sovereignty issues. |
+| 6 | Hong Kong/Jimmy Lai case and press freedom | Reiterations of pressure cases in Hong Kong; not central to the bilateral substantive agenda. |
+| 7 | Rare-earths, tariffs, and supply chains | Outlines trade, minerals, and broader economic issues as areas of potential discussion and leverage in negotiations. |
+| 8 | Taiwan sovereignty and US arms policy | Emphasizes Taiwan as a persistent flashpoint in US-China diplomacy and cross-strait security considerations. |
+| 9 | US-China business relations and resilience | Notes ongoing commercial ties, investment climate, and the resilience of economic links between the two powers. |
+| 10 | AI, crisis communication, and strategic technology | Frames AI governance and incident-communication mechanisms as part of the bilateral technology agenda alongside trade. |
+| 11 | US corporate engagement in China | Observes continued reinvestment and dialogue between American firms and China; business diplomacy features in coverage. |
+| 12 | Rest-time logistics for Xi during the visit | Reports on requests for rest periods and a separate room, illustrating sensitive logistical accommodations. |
+| 13 | Official language of “historic milestone” on visits | Highlights official framing around the visit as historic and milestone in bilateral relations. |
+| 14 | AI risk dialogue and terminology (superintelligence) | Describes AI risk engagement using terms like “superintelligence” and related policy language. |
+| 15 | Travel logistics and “special plane” narratives | Covers travel logistics, including the notion of a “special plane” for a PRC leader and related symbolism. |
+| 16 | Similar plane/flight logistics (recurrent framing) | Reiterates the notion of the aircraft arrangement and the constructive stability framing. |
+| 17 | Editorials and Taiwan policy signaling | Notes domestic/foreign editorial framing and reiteration of Taiwan as a sensitive issue. |
+| 18 | Military pageantry and arrival ceremony | Focuses on the display of ceremony (military flyovers, guards, and national anthems) on arrival. |
+| 19 | National Archives visit as ceremonial backdrop | Describes tea, archives viewing, and a formal three-day schedule emphasizing culture/history. |
+| 20 | Constructive bilateral framing and stability rhetoric | Portrays a narrative of a cooperative, stable China–US relationship with mutual respect. |
+| 21 | Eight deliverables, Trade Council, AI dialogue (official outcomes) | Consolidates material on concrete deliverables: tariff reductions, trade council, AI dialogue, and related mechanisms. |
+| 22 | Broad coverage of AI, Iran, and broader geopolitics | Notes AI collaboration and broader regional/global issues as context to the summit. |
+| 23 | Attendees and state banquet dynamics (tech leaders present) | Highlights the presence of major US tech leaders at the state banquet as signaling emphasis on technology finance. |
+| 24 | End-of-visit dynamics and absence of a joint statement | Flags that the visit concluded without a joint communique, with separate official readouts. |
+| 25 | Mutual respect and “rules” for interaction | Notes the idea of guided, respectful engagement and boundaries for future competition. |
+| 26 | Itinerary details and airport arrival | Documents the step-by-step schedule: airport arrival, welcome, and subsequent events. |
+| 27 | Multi-article consolidation of the trip | Several fragments present a collage of events, underscoring the breadth of the visit across venues. |
+| 28 | Official confirmation of dates and agenda (Reuters/agency framing) | Confirms Xi’s visit dates and general exchange expectations, framing the trip in a multinational news cycle. |
+| 29 | Xi’s trip as a milestone in US–China relations | Frames the trip within ongoing high-level engagement and a trajectory of steady interactions. |
+| 30 | Xinhua/Beijing confirmation of the visit | Reiterates official state-media confirmation of Xi’s Washington visit and core aims. |
+
+========================================================
+SECTION 2 — IMPORTANT QUOTATIONS AND KEY HIGHLIGHTS
+========================================================
+
+### Cluster -1 — Xi's state visit and partnership rhetoric
+
+**Original quotation:**
+> "I am willing to work with President Trump to steer and steer the great ship of China-U.S. relations, making 2026 a historic and landmark year for the future of China-U.S. relations."
+
+**Speaker / Attribution:** Xi Jinping, President of China.
+
+**Fragment:** Cluster -1, Fragmento 92.
+
+**Journalistic relevance:** Signals an explicit, forward-looking commitment to a sustained, cooperative trajectory despite tensions, framing 2026 as a milestone year.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — Business trust and outcomes
+
+**Original quotation:**
+> "The most important outcome of every meeting between the two heads of state has been building trust."
+
+**Speaker / Attribution:** Tan Sen, President of the U.S.-China Business Council.
+
+**Fragment:** Cluster -1, Fragmento 92.
+
+**Journalistic relevance:** Emphasizes the frame that trust-building is the meaningful through-line of engagements, even when deliverables may be contested.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — Trump on shared values despite differences
+
+**Original quotation:**
+> "President Xi and I understand that we represent different systems, but the ties between our peoples remain strong and our relationship is as good as ever,"
+
+**Speaker / Attribution:** Donald J. Trump, President of the United States.
+
+**Fragment:** Cluster -1, Fragmento 66.
+
+**Journalistic relevance:** Captures a conciliatory, personal-relationship framing of the bilateral agenda amid systemic divergences.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — Trump on future cooperation
+
+**Original quotation:**
+> "Together we can continue to build relationships that contribute to the prosperity and security of future generations."
+
+**Speaker / Attribution:** Donald J. Trump, President of the United States.
+
+**Fragment:** Cluster -1, Fragmento 66.
+
+**Journalistic relevance:** Underlines an aspirational framing of long-term, cooperative potential beyond immediate issues.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — Taiwan/oppose independence phrasing
+
+**Original quotation:**
+> "China hopes that the U.S. side will adhere to the correct position of opposing Taiwan's independence and handle the issue prudently."
+
+**Speaker / Attribution:** Chinese Foreign Ministry (as reported by coverage; attributed to ministry spokespersons in reporting).
+
+**Fragment:** Cluster -1, Fragmento 8.
+
+**Journalistic relevance:** Encapsulates a red-line message shaping the Taiwan dimension of diplomacy.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — AI governance and human oversight
+
+**Original quotation:**
+> "AI must be kept under human control"
+
+**Speaker / Attribution:** Xi Jinping.
+
+**Fragment:** Cluster -1, Fragmento 146.
+
+**Journalistic relevance:** Signals a stated Chinese position on AI governance and a concern for human-centric control amid bilateral tech competition.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — Constructive strategic/stable relationship framing
+
+**Original quotation:**
+> "China is willing to work with the United States to enrich the connotation of the China-U.S. constructive strategic and stable relationship, strengthen dialogue and cooperation, properly manage differences, continuously enhance the well-being of the peoples of both countries, and promote peace, stability and prosperity in the world."
+
+**Speaker / Attribution:** Guo Jiakun (Chinese Foreign Ministry spokesperson).
+
+**Fragment:** Cluster -1, Fragmento 113.
+
+**Journalistic relevance:** Lays out the official aspiration for a stable, cooperative bilateral framework with concrete language about dialogue and mutual well-being.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — Historic/milestone significance of reciprocal visits
+
+**Original quotation:**
+> "two reciprocal visits of the two heads of state over a six-month period are 'historic, milestone significance'."
+
+**Speaker / Attribution:** Guo Jiakun, Chinese Foreign Ministry spokesperson.
+
+**Fragment:** Cluster -1, Fragmento 28.
+
+**Journalistic relevance:** Highlights the narrative that high-frequency bilateral engagement carries symbolic significance for stability.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — Partnership over rivalry
+
+**Original quotation:**
+> "- Xi calls for partnership: In a written speech after landing, Xi said China and the US should be 'partners rather than rivals.'"
+
+**Speaker / Attribution:** Xi Jinping.
+
+**Fragment:** Cluster -1, Fragmento 10.
+
+**Journalistic relevance:** Core phrasing around the partnership framing that recurs in coverage.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+### Cluster -1 — Russia-China statement (context-setting)
+
+**Original quotation:**
+> "China congratulates Russia on the successful holding of the State Duma elections," Guo told reporters.
+
+**Speaker / Attribution:** Guo Jiakun (Chinese Foreign Ministry spokesperson).
+
+**Fragment:** Cluster -1, Fragmento 39.
+
+**Journalistic relevance:** Illustrates contemporaneous diplomacy and cross-border signaling affecting regional dynamics.
+
+**Evidence status:** Attributed quotation.
+
+---
+
+> Note: The 10 quotations above are drawn from the provided fragments across clusters, and reproduced verbatim where possible. Some quotes are attributed to named officials; others reflect reported ministry statements. Where the original wording is slightly stylized (e.g., typographic quotes or nonstandard punctuation in the source), the quotation is presented as it appears in the fragment.
+
+========================================================
+SECTION 3 — COMPETING JOURNALISTIC NARRATIVES
+========================================================
+
+| Narrative | Related clusters | Interpretation |
+|-----------|------------------|--------------|
+| Ceremonial diplomacy vs substantive outcomes | -1, 18, 23, 26, 27, 28, 29, 30 | A dominant thread highlights lavish symbolism (airport welcome, state dinner, National Archives visit) as a backdrop to more modest or tentative substantive agreements, raising questions about what was actually achieved beyond optics. |
+| Strategic competition with governance scaffolds | 10, 14, 21, 28, 22 | Narratives emphasize opening institutional channels (AI dialogue, crisis-communications protocols, trade council) as mechanisms to manage competition, reduce risk, and stabilize the bilateral relationship in the tech era. |
+| Taiwan as a central, red-line issue | 8, 17, 122, 123 | Across clusters, Taiwan surfaces repeatedly as the sensitive hinge of security and diplomacy, with signals that Washington and Beijing aim to avert a crisis but remain deeply divided on sovereignty and arms policy. |
+| Misinformation and fact-checking | 4 | A separate stream illustrates how viral clips can misrepresent policy positions (e.g., nuclear disarmament ultimatums), highlighting the importance of verification amid high-stakes diplomacy. |
+| Economic diplomacy and supply chains | 7, 9, 21, 29 | The narrative threads converge on trade truce extensions, tariff discussions, rare-earths, and investment flows, framing the meeting as a pivot in economic-statecraft rather than a single pact. |
+| People-to-people and public diplomacy | 11, 18, 99, 106 | Coverage emphasizes cultural engagement, public diplomacy (tea at the White House, National Archives visits), and business-seat

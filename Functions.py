@@ -13,9 +13,8 @@ def translate_input(text):
     t2 = MyMemoryTranslator(source='en-US',target='zh-CN').translate(text)
     t3 = MyMemoryTranslator(source='en-US',target='es-ES').translate(text)
     t4 = MyMemoryTranslator(source='en-US',target='ar-SA').translate(text)
-    t5 = MyMemoryTranslator(source='en-US',target='sw-KE').translate(text)
 
-    return [text,t1,t2,t3,t4,t5]
+    return [text,t1,t2,t3,t4]
 
 # Funcion de buscar en la web unn input
 
@@ -23,8 +22,7 @@ regions = ["us-en",
            "ru-ru",
            "cn-zh",
            "es-es",
-           "xa-ar",
-           "wt-wt" ]
+           "xa-ar"]
 
 # URL SEARCH Functions
 

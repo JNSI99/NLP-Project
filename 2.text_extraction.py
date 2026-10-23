@@ -4,11 +4,7 @@ import trafilatura
 from urllib.parse import urlparse
 from playwright.sync_api import sync_playwright, TimeoutError as PlaywrightTimeout
 
-
-df = pd.read_csv("urls.csv",
-                 index_col=False,
-                 header=0,
-                 encoding="utf-8")
+"""DONE"""
 
 # --------------------------------------------------
 # 1. Extracción rápida utilizando Trafilatura
@@ -189,6 +185,22 @@ def extract_articles(df):
 
     return df
 
-df_final = extract_articles(df)
+def main():
 
-df_final.to_csv("texts.csv",index=False,encoding="utf-8")
+    df = pd.read_csv("urls.csv",
+                     index_col=False,
+                     header=0,
+                     encoding="utf-8")
+
+    print("=== TEXT EXTRACTION ===")
+
+    df_final = extract_articles(df)
+
+    print("=== SAVING TEXTS IN texts.csv ===")
+
+    df_final.to_csv("texts.csv",index=False,encoding="utf-8")
+
+if __name__ == "__main__":
+    main()
+
+

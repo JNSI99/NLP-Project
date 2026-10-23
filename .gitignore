@@ -1,2 +1,10 @@
 *.csv
 .env
+.txt
+# Ignorar carpetas completas en cualquier lugar del proyecto
+node_modules/
+dist/
+build/
+venv/
+.env/
+cluster_analysis/
