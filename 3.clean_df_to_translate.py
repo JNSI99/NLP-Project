@@ -17,14 +17,14 @@ def main():
 
         #Guardamos los titulos
 
-        df_titles = df[["language","title"]].copy()
+        df_titles = df[["language","title","article_id"]].copy()
         print("=== TITLES SAVE IN titles_to_translate.csv ===")
         df_titles.to_csv("titles_to_translate.csv", index=False, encoding="utf-8")
 
 
         #limpiamos filas sin texto de noticias
 
-        df_bodies = df[["title","language","body"]].copy()
+        df_bodies = df[["title","language","body","article_id"]].copy()
         df_bodies = df_bodies.dropna(subset=["body"])
 
         #limpiamos filas con un texto mayo a 11k caracteres

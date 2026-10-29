@@ -198,6 +198,7 @@ def main():
 
     print("=== SAVING TEXTS IN texts.csv ===")
 
+    df_final["article_id"] = range(1,len(df_final)+1)
     df_final.to_csv("texts.csv",index=False,encoding="utf-8")
 
 if __name__ == "__main__":

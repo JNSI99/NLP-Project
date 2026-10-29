@@ -4,6 +4,8 @@ from pathlib import Path
 from openai import OpenAI
 from dotenv import load_dotenv
 
+""" DONE """
+
 BASE_DIR = Path(__file__).resolve().parent
 
 # Load environment variables
@@ -51,58 +53,58 @@ Keep original quotes in their source language.
 # STEP 1 - READ CLUSTERS
 # ==========================================
 
-def load_clusters(filename):
-    text = Path(filename).read_text(encoding="utf-8")
+import re
 
-    header_pattern = re.compile(
-        r"(?m)^CLUSTER\s+(-?\d+)\s*\|\s*\d+\s+fragmentos\s*$"
+def load_clusters(filename="clusters.txt"):
+
+    with open(filename, "r", encoding="utf-8") as file:
+        content = file.read()
+
+    cluster_pattern = re.compile(
+        r"^CLUSTER(?:\s+ID:)?\s*(-?\d+)\s*\|\s*\d+\s+fragmentos",
+        re.MULTILINE
     )
 
-    matches = list(header_pattern.finditer(text))
+    fragment_pattern = re.compile(
+        r"^FRAGMENT ID:\s*(\d+)\s*$",
+        re.MULTILINE
+    )
+
+    matches = list(cluster_pattern.finditer(content))
     clusters = {}
 
     for i, match in enumerate(matches):
+
         cluster_id = int(match.group(1))
 
         start = match.end()
         end = (
             matches[i + 1].start()
             if i + 1 < len(matches)
-            else len(text)
+            else len(content)
         )
 
-        section = text[start:end]
-
-        fragment_pattern = re.compile(
-            r"(?m)^Fragmento\s+(\d+)\s*:\s*$"
-        )
-
-        fragment_matches = list(
-            fragment_pattern.finditer(section)
-        )
-
+        section = content[start:end]
         fragments = []
 
-        for j, fragment_match in enumerate(fragment_matches):
-            fragment_start = fragment_match.end()
+        fragment_matches = list(fragment_pattern.finditer(section))
 
-            fragment_end = (
+        for j, fragment_match in enumerate(fragment_matches):
+
+            fragment_id = int(fragment_match.group(1))
+
+            text_start = fragment_match.end()
+            text_end = (
                 fragment_matches[j + 1].start()
                 if j + 1 < len(fragment_matches)
                 else len(section)
             )
 
-            fragment_text = section[
-                fragment_start:fragment_end
-            ].strip()
-
-            fragment_text = re.sub(
-                r"\n=+\s*$", "", fragment_text
-            ).strip()
+            fragment_text = section[text_start:text_end].strip()
 
             if fragment_text:
                 fragments.append({
-                    "number": int(fragment_match.group(1)),
+                    "fragment_id": fragment_id,
                     "text": fragment_text
                 })
 
@@ -110,14 +112,13 @@ def load_clusters(filename):
 
     return clusters
 
-
 # ==========================================
 # STEP 2 - FORMAT INPUT
 # ==========================================
 
 def format_fragments(fragments):
     return "\n\n".join(
-        f"[Fragmento {fragment['number']}]\n"
+        f"[Fragment ID: {fragment['fragment_id']}]\n"
         f"{fragment['text']}"
         for fragment in fragments
     )
@@ -161,7 +162,7 @@ Extract up to 3 significant quotations.
 For each one provide:
 - Exact quotation
 - Speaker or attribution, if available
-- Fragment number
+- Fragment ID
 - Journalistic significance
 
 Do not include invented or reconstructed quotations.

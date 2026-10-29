@@ -5,7 +5,7 @@ import pandas as pd
 """DONE"""
 
 # Example
-text = "Xi Jinping official state visit to the US September 23 to 25"
+text = "Myanmar civil war"
 
 
 def main(text):

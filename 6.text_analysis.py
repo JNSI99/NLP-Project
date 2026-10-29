@@ -1,23 +1,16 @@
 import pandas as pd
 
+""" DONE """
+#FUNCIONES
 
-#FUNCIONA
-
-df = pd.read_csv("gold_texts.csv",
-                 encoding="utf-8",
-                 )
-#Eliminamos Duplicados
-
-df = df.drop_duplicates(subset=["body_en"],
-                        keep="first")
-
-# Fragmentamos
+# FRAGMENTACION
+import pandas as pd
 
 def fragment_text(column, max_words=100):
 
     fragments = []
 
-    for text in column.dropna():
+    for article_id, text in column.dropna().items():
 
         if not isinstance(text, str) or not text.strip():
             continue
@@ -28,13 +21,18 @@ def fragment_text(column, max_words=100):
             fragment = " ".join(words[i:i + max_words])
 
             if fragment.strip():
-                fragments.append(fragment)
+                fragments.append({
+                    "article_id": article_id,
+                    "fragment_id": len(fragments),
+                    "fragment": fragment
+                })
 
-    return pd.DataFrame({"fragment": fragments})
+    return pd.DataFrame(
+        fragments,
+        columns=["article_id", "fragment_id", "fragment"]
+    )
 
-df_frag = fragment_text(df["body_en"])
-
-import numpy as np
+# ELIMINAR DUPLICADOS SEMANTICOS
 from sklearn.metrics.pairwise import cosine_similarity
 
 def remove_semantic_duplicates(df, threshold=0.95):
@@ -59,13 +57,8 @@ def remove_semantic_duplicates(df, threshold=0.95):
 
     return df.iloc[keep].reset_index(drop=True)
 
-#limpieza de fragmentos
+# SE CREAN LOS EMBEDDINGS
 
-df_frag.to_csv("fragments_test.csv", index=False, encoding="utf-8")
-
-print("Fragmentacion completada comienzas los embeddings")
-
-#Creamos los embeddings
 from sentence_transformers import SentenceTransformer
 
 # Cargar el modelo una sola vez
@@ -86,95 +79,12 @@ def generate_embeddings(df):
 
     return df
 
-df_embeddings = generate_embeddings(df_frag)
-
-print("Dimensiones")
-
-print(df.shape)
-print(df_frag.shape)
-print(df_embeddings.shape)
-
-df_embeddings.to_csv("embbedings_test.csv", index=False, encoding="utf-8")
-
-print("Embeddings completados comienza la clustrizacion")
-
-#COMIENZA CLUSTERIZACION DE LOS EMBEDDINGS
-"""
-import numpy as np
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
-
-import numpy as np
-import pandas as pd
-from sklearn.metrics.pairwise import cosine_similarity
-
-def calculate_similarity(df):
-
-    embeddings = np.stack([
-        np.fromstring(
-            x.strip("[]"),
-            sep=" "
-        ) if isinstance(x, str) else np.asarray(x, dtype=float)
-        for x in df["embedding"]
-    ])
-
-    similarity = cosine_similarity(embeddings)
-
-    return pd.DataFrame(similarity)
-
-df_similarity = calculate_similarity(df)
-
-print("df cosine similarity", df_similarity.shape)
-
-
-Representacion de cosine similarity
-import matplotlib.pyplot as plt
-
-#Funcion para ver graficamente cosine similarity
-def plot_similarity(df_similarity):
-
-    plt.figure(figsize=(10, 8))
-
-    plt.imshow(
-        df_similarity.values,
-        cmap="coolwarm",
-        vmin=-1,
-        vmax=1
-    )
-
-    plt.colorbar(label="Cosine Similarity")
-    plt.title("Semantic Similarity Between News Fragments")
-    plt.xlabel("Fragment ID")
-    plt.ylabel("Fragment ID")
-
-    plt.tight_layout()
-    plt.show()
-
-plot_similarity(df_similarity)
-"""
-
-#Hdbscan
-
-import numpy as np
-import pandas as pd
-from sklearn.cluster import HDBSCAN
-
+#CLUSTERIZATION
 import numpy as np
 from sklearn.cluster import HDBSCAN
 from sklearn.preprocessing import normalize
 
-#limpiamos
-
-df_clean = remove_semantic_duplicates(df_embeddings,
-                                       threshold=0.95)
-
-print("Limpieza duplicados completada")
-print(df_embeddings.shape)
-print(df_clean.shape)
-
-#Clusterizacion de los embeddings
-
-def cluster_fragments(df, min_cluster_size=2, min_samples=2):
+def cluster_fragments(df, min_cluster_size=5, min_samples=2):
 
     df = df.copy()
 
@@ -203,33 +113,49 @@ def cluster_fragments(df, min_cluster_size=2, min_samples=2):
     df["cluster_probability"] = model.probabilities_
 
     return df
+#CLUSTERIZACION 2
+
+import numpy as np
+import umap
+from sklearn.cluster import HDBSCAN
+from sklearn.preprocessing import normalize
 
 
-df_clusters = cluster_fragments(df_embeddings)
+def cluster_fragments2(df):
 
-print(df_clusters["cluster"].value_counts().sort_index())
+    df = df.copy().reset_index(drop=True)
 
-#Ensenar el texto de los clusters
-def show_clusters(df):
+    # Extract embeddings
+    embeddings = np.stack(df["embedding"].values)
 
-    for cluster_id, group in df.groupby("cluster"):
+    # Normalize embeddings
+    embeddings = normalize(embeddings)
 
-        print(f"\n{'=' * 60}")
-        print(f"CLUSTER {cluster_id} | {len(group)} fragmentos")
-        print(f"{'=' * 60}")
+    # Dimensionality reduction
+    reducer = umap.UMAP(
+        n_neighbors=8,
+        n_components=11,
+        min_dist=0.0,
+        metric="cosine",
+        random_state=42
+    )
 
-        for i, fragment in enumerate(group["fragment"], 1):
-            print(f"\nFragmento {i}:")
-            print(fragment)
+    reduced_embeddings = reducer.fit_transform(embeddings)
 
-def show_cluster(df, cluster_id):
+    # Clustering
+    model = HDBSCAN(
+        min_cluster_size=3,
+        min_samples=2,
+        metric="euclidean"
+    )
 
-    fragments = df[df["cluster"] == cluster_id]
+    df["cluster"] = model.fit_predict(reduced_embeddings)
 
-    for i, fragment in enumerate(fragments["fragment"], 1):
-        print(f"\n--- Fragmento {i} ---")
-        print(fragment)
+    df["cluster_probability"] = model.probabilities_
 
+    return df
+
+# SAVE CLUSTER AS TXT
 def save_clusters(df, filename="clusters.txt"):
 
     with open(filename, "w", encoding="utf-8") as file:
@@ -238,23 +164,83 @@ def save_clusters(df, filename="clusters.txt"):
 
             file.write(f"\n{'=' * 60}\n")
             file.write(
-                f"CLUSTER {cluster_id} | {len(group)} fragmentos\n"
+                f"CLUSTER ID: {cluster_id} | {len(group)} fragmentos\n"
             )
             file.write(f"{'=' * 60}\n")
 
-            for i, fragment in enumerate(group["fragment"], 1):
-                file.write(f"\nFragmento {i}:\n")
-                file.write(f"{fragment}\n")
+            for _, row in group.iterrows():
+
+                file.write(
+                    f"FRAGMENT ID: {row['fragment_id']}\n"
+                )
+
+                file.write(f"{row['fragment']}\n")
 
     print(f"Clusters guardados en {filename}")
 
-print("dimensiones 2")
+def main():
 
-print(df.shape)
-print(df_frag.shape)
-print(df_embeddings.shape)
-print(df_clusters.shape)
+    #FUNCIONA
 
-df_clusters.to_csv("clusters_test.csv", index=False, encoding="utf-8")
+    df = pd.read_csv("gold_texts.csv",
+                     encoding="utf-8")
 
-save_clusters(df_clusters, "clusters.txt")
+    #Eliminamos Duplicados
+
+    df = df.drop_duplicates(subset=["body_en"],
+                            keep="first")
+
+    #Fragmentamos en un nuevo df
+
+    df_frag = fragment_text(df["body_en"])
+
+    print("NUMBER OF FRAGMENTS",df_frag.shape)
+
+    df_frag.to_csv("fragments_test.csv", index=False, encoding="utf-8")
+
+    print("=== FRAGMENTATION FINISH, EMBEDDINGS START ===")
+
+
+    df_embeddings = generate_embeddings(df_frag)
+
+    print("Dimensiones")
+
+    print(df.shape)
+    print(df_frag.shape)
+    print(df_embeddings.shape)
+
+    df_embeddings.to_csv("embbedings_test.csv", index=False, encoding="utf-8")
+
+    print("EMBEDDINGS COMPLETED, CLUSTERIZATION STARTS")
+
+    #COMIENZA CLUSTERIZACION DE LOS EMBEDDINGS
+
+    """
+    #LIMPIAMOS DUPLICADOS SEMANTICOS
+    
+    df_clean = remove_semantic_duplicates(df_embeddings,
+                                           threshold=0.95)
+    
+    print("SEMANTIC DUPLICATE CLEANING COMPLETED")
+    print(df_embeddings.shape)
+    print(df_clean.shape)
+    """
+
+    #CLUSTERIZATION
+    df_clusters = cluster_fragments2(df_embeddings)
+
+    print(df_clusters["cluster"].value_counts().sort_index())
+
+    #Ensenar el texto de los clusters
+    print("SHAPE CONTROL")
+    print(df.shape)
+    print(df_frag.shape)
+    print(df_embeddings.shape)
+    print(df_clusters.shape)
+
+    print("SAVING EMBEDDINGS IN clusters_test.csv AND clusters.txt")
+    df_clusters.to_csv("clusters_test.csv", index=False, encoding="utf-8")
+    save_clusters(df_clusters, "clusters.txt")
+
+if __name__ == "__main__":
+    main()
