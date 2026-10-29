@@ -51,6 +51,7 @@ def main(text):
 #df concat
 
      df_final = pd.concat([dfs[0],dfs[1],dfs[2],dfs[3],dfs[4]],ignore_index=True)
+     #df_final = df_final.sample(n=10)
      print("Final df size", df_final.shape)
 
 #Save the urls
